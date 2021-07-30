@@ -45,7 +45,7 @@ use \Ebay\Sell\Listing\ObjectSerializer;
  */
 class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -204,12 +204,12 @@ class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['category_id'] = $data['category_id'] ?? null;
-        $this->container['condition'] = $data['condition'] ?? null;
-        $this->container['format'] = $data['format'] ?? null;
-        $this->container['pricing_summary'] = $data['pricing_summary'] ?? null;
-        $this->container['product'] = $data['product'] ?? null;
-        $this->container['charity'] = $data['charity'] ?? null;
+        $this->container['category_id'] = isset($data['category_id']) ? $data['category_id'] : null;
+        $this->container['condition'] = isset($data['condition']) ? $data['condition'] : null;
+        $this->container['format'] = isset($data['format']) ? $data['format'] : null;
+        $this->container['pricing_summary'] = isset($data['pricing_summary']) ? $data['pricing_summary'] : null;
+        $this->container['product'] = isset($data['product']) ? $data['product'] : null;
+        $this->container['charity'] = isset($data['charity']) ? $data['charity'] : null;
     }
 
     /**
@@ -400,7 +400,7 @@ class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

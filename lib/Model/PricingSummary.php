@@ -45,7 +45,7 @@ use \Ebay\Sell\Listing\ObjectSerializer;
  */
 class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -189,9 +189,9 @@ class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['auction_reserve_price'] = $data['auction_reserve_price'] ?? null;
-        $this->container['auction_start_price'] = $data['auction_start_price'] ?? null;
-        $this->container['price'] = $data['price'] ?? null;
+        $this->container['auction_reserve_price'] = isset($data['auction_reserve_price']) ? $data['auction_reserve_price'] : null;
+        $this->container['auction_start_price'] = isset($data['auction_start_price']) ? $data['auction_start_price'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
     }
 
     /**
@@ -310,7 +310,7 @@ class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

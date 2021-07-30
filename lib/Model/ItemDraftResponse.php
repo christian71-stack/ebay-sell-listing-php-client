@@ -45,7 +45,7 @@ use \Ebay\Sell\Listing\ObjectSerializer;
  */
 class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -189,9 +189,9 @@ class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['item_draft_id'] = $data['item_draft_id'] ?? null;
-        $this->container['sell_flow_native_uri'] = $data['sell_flow_native_uri'] ?? null;
-        $this->container['sell_flow_url'] = $data['sell_flow_url'] ?? null;
+        $this->container['item_draft_id'] = isset($data['item_draft_id']) ? $data['item_draft_id'] : null;
+        $this->container['sell_flow_native_uri'] = isset($data['sell_flow_native_uri']) ? $data['sell_flow_native_uri'] : null;
+        $this->container['sell_flow_url'] = isset($data['sell_flow_url']) ? $data['sell_flow_url'] : null;
     }
 
     /**
@@ -310,7 +310,7 @@ class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

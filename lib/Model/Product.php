@@ -45,7 +45,7 @@ use \Ebay\Sell\Listing\ObjectSerializer;
  */
 class Product implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -204,12 +204,12 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['aspects'] = $data['aspects'] ?? null;
-        $this->container['brand'] = $data['brand'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['epid'] = $data['epid'] ?? null;
-        $this->container['image_urls'] = $data['image_urls'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
+        $this->container['aspects'] = isset($data['aspects']) ? $data['aspects'] : null;
+        $this->container['brand'] = isset($data['brand']) ? $data['brand'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['epid'] = isset($data['epid']) ? $data['epid'] : null;
+        $this->container['image_urls'] = isset($data['image_urls']) ? $data['image_urls'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
     }
 
     /**
@@ -400,7 +400,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**
