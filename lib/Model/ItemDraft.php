@@ -1,11 +1,11 @@
 <?php
 /**
- * Amount
+ * ItemDraft
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Listing\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Listing\ObjectSerializer;
 
 /**
- * Amount Class Doc Comment
+ * ItemDraft Class Doc Comment
  *
  * @category Class
- * @description The type that defines the fields for the currency and a monetary amount.
- * @package  Ebay\Sell
+ * @description The type that defines the fields for the listing details.
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Amount';
+    protected static $openAPIModelName = 'ItemDraft';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,12 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'currency' => 'string',
-        'value' => 'string'
+        'category_id' => 'string',
+        'condition' => 'string',
+        'format' => 'string',
+        'pricing_summary' => '\Ebay\Sell\Listing\Model\PricingSummary',
+        'product' => '\Ebay\Sell\Listing\Model\Product',
+        'charity' => '\Ebay\Sell\Listing\Model\Charity'
     ];
 
     /**
@@ -72,8 +76,12 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'currency' => null,
-        'value' => null
+        'category_id' => null,
+        'condition' => null,
+        'format' => null,
+        'pricing_summary' => null,
+        'product' => null,
+        'charity' => null
     ];
 
     /**
@@ -103,8 +111,12 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'currency' => 'currency',
-        'value' => 'value'
+        'category_id' => 'categoryId',
+        'condition' => 'condition',
+        'format' => 'format',
+        'pricing_summary' => 'pricingSummary',
+        'product' => 'product',
+        'charity' => 'charity'
     ];
 
     /**
@@ -113,8 +125,12 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'currency' => 'setCurrency',
-        'value' => 'setValue'
+        'category_id' => 'setCategoryId',
+        'condition' => 'setCondition',
+        'format' => 'setFormat',
+        'pricing_summary' => 'setPricingSummary',
+        'product' => 'setProduct',
+        'charity' => 'setCharity'
     ];
 
     /**
@@ -123,8 +139,12 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'currency' => 'getCurrency',
-        'value' => 'getValue'
+        'category_id' => 'getCategoryId',
+        'condition' => 'getCondition',
+        'format' => 'getFormat',
+        'pricing_summary' => 'getPricingSummary',
+        'product' => 'getProduct',
+        'charity' => 'getCharity'
     ];
 
     /**
@@ -184,8 +204,12 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['category_id'] = $data['category_id'] ?? null;
+        $this->container['condition'] = $data['condition'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
+        $this->container['pricing_summary'] = $data['pricing_summary'] ?? null;
+        $this->container['product'] = $data['product'] ?? null;
+        $this->container['charity'] = $data['charity'] ?? null;
     }
 
     /**
@@ -213,49 +237,145 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets currency
+     * Gets category_id
      *
      * @return string|null
      */
-    public function getCurrency()
+    public function getCategoryId()
     {
-        return $this->container['currency'];
+        return $this->container['category_id'];
     }
 
     /**
-     * Sets currency
+     * Sets category_id
      *
-     * @param string|null $currency The three-letter ISO 4217 code representing the currency of the amount in the value field. Restriction: Only the currency of the marketplace is supported. For example, on the US marketplace the only currency supported is USD. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/listing/types/bas:CurrencyCodeEnum'>eBay API documentation</a>
+     * @param string|null $category_id The ID of the leaf category associated with this item. A leaf category is the lowest level in that category and has no children. Note: If you submit both a category ID and an EPID, eBay determines the best category based on the EPID and uses that. The category ID will be ignored.
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setCategoryId($category_id)
     {
-        $this->container['currency'] = $currency;
+        $this->container['category_id'] = $category_id;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets condition
      *
      * @return string|null
      */
-    public function getValue()
+    public function getCondition()
     {
-        return $this->container['value'];
+        return $this->container['condition'];
     }
 
     /**
-     * Sets value
+     * Sets condition
      *
-     * @param string|null $value The monetary amount, in the currency specified by the currency field.
+     * @param string|null $condition The enumeration value passed in here sets the condition of the item, such as NEW or USED_EXCELLENT. See ConditionEnum for the full list of supported values. Supported item conditions can vary by eBay category. To see which item conditions are supported for a category, you can use the getItemConditionPolicies method of the Metadata API. Note: The 'Manufacturer Refurbished' item condition is no longer a valid item condition in any eBay marketplace, and to reflect this change, the pre-existing MANUFACTURER_REFURBISHED enumeration value has been replaced by the CERTIFIED_REFURBISHED enumeration value. CR-eligible sellers should make a note to start using CERTIFIED_REFURBISHED from this point forward. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the Certified refurbished program page in Seller Center. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/listing/types/api:ConditionEnum'>eBay API documentation</a>
      *
      * @return self
      */
-    public function setValue($value)
+    public function setCondition($condition)
     {
-        $this->container['value'] = $value;
+        $this->container['condition'] = $condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format The format of the listing. Valid Values: FIXED_PRICE and AUCTION For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/listing/types/api:ListingFormatEnum'>eBay API documentation</a>
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets pricing_summary
+     *
+     * @return \Ebay\Sell\Listing\Model\PricingSummary|null
+     */
+    public function getPricingSummary()
+    {
+        return $this->container['pricing_summary'];
+    }
+
+    /**
+     * Sets pricing_summary
+     *
+     * @param \Ebay\Sell\Listing\Model\PricingSummary|null $pricing_summary pricing_summary
+     *
+     * @return self
+     */
+    public function setPricingSummary($pricing_summary)
+    {
+        $this->container['pricing_summary'] = $pricing_summary;
+
+        return $this;
+    }
+
+    /**
+     * Gets product
+     *
+     * @return \Ebay\Sell\Listing\Model\Product|null
+     */
+    public function getProduct()
+    {
+        return $this->container['product'];
+    }
+
+    /**
+     * Sets product
+     *
+     * @param \Ebay\Sell\Listing\Model\Product|null $product product
+     *
+     * @return self
+     */
+    public function setProduct($product)
+    {
+        $this->container['product'] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Gets charity
+     *
+     * @return \Ebay\Sell\Listing\Model\Charity|null
+     */
+    public function getCharity()
+    {
+        return $this->container['charity'];
+    }
+
+    /**
+     * Sets charity
+     *
+     * @param \Ebay\Sell\Listing\Model\Charity|null $charity charity
+     *
+     * @return self
+     */
+    public function setCharity($charity)
+    {
+        $this->container['charity'] = $charity;
 
         return $this;
     }
@@ -280,7 +400,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

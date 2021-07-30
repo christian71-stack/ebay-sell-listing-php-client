@@ -1,11 +1,11 @@
 <?php
 /**
- * PricingSummary
+ * ItemDraftResponse
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Listing\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Listing\ObjectSerializer;
 
 /**
- * PricingSummary Class Doc Comment
+ * ItemDraftResponse Class Doc Comment
  *
  * @category Class
- * @description The type that defines the fields for the price details for an item.
- * @package  Ebay\Sell
+ * @description The type that defines the field for the &lt;b&gt; createItemDraft&lt;/b&gt; response.
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
+class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PricingSummary';
+    protected static $openAPIModelName = 'ItemDraftResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,9 @@ class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'auction_reserve_price' => '\Ebay\Sell\Listing\Model\Amount',
-        'auction_start_price' => '\Ebay\Sell\Listing\Model\Amount',
-        'price' => '\Ebay\Sell\Listing\Model\Amount'
+        'item_draft_id' => 'string',
+        'sell_flow_native_uri' => 'string',
+        'sell_flow_url' => 'string'
     ];
 
     /**
@@ -73,9 +73,9 @@ class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'auction_reserve_price' => null,
-        'auction_start_price' => null,
-        'price' => null
+        'item_draft_id' => null,
+        'sell_flow_native_uri' => null,
+        'sell_flow_url' => null
     ];
 
     /**
@@ -105,9 +105,9 @@ class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'auction_reserve_price' => 'auctionReservePrice',
-        'auction_start_price' => 'auctionStartPrice',
-        'price' => 'price'
+        'item_draft_id' => 'itemDraftId',
+        'sell_flow_native_uri' => 'sellFlowNativeUri',
+        'sell_flow_url' => 'sellFlowUrl'
     ];
 
     /**
@@ -116,9 +116,9 @@ class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'auction_reserve_price' => 'setAuctionReservePrice',
-        'auction_start_price' => 'setAuctionStartPrice',
-        'price' => 'setPrice'
+        'item_draft_id' => 'setItemDraftId',
+        'sell_flow_native_uri' => 'setSellFlowNativeUri',
+        'sell_flow_url' => 'setSellFlowUrl'
     ];
 
     /**
@@ -127,9 +127,9 @@ class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'auction_reserve_price' => 'getAuctionReservePrice',
-        'auction_start_price' => 'getAuctionStartPrice',
-        'price' => 'getPrice'
+        'item_draft_id' => 'getItemDraftId',
+        'sell_flow_native_uri' => 'getSellFlowNativeUri',
+        'sell_flow_url' => 'getSellFlowUrl'
     ];
 
     /**
@@ -189,9 +189,9 @@ class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['auction_reserve_price'] = isset($data['auction_reserve_price']) ? $data['auction_reserve_price'] : null;
-        $this->container['auction_start_price'] = isset($data['auction_start_price']) ? $data['auction_start_price'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['item_draft_id'] = $data['item_draft_id'] ?? null;
+        $this->container['sell_flow_native_uri'] = $data['sell_flow_native_uri'] ?? null;
+        $this->container['sell_flow_url'] = $data['sell_flow_url'] ?? null;
     }
 
     /**
@@ -219,73 +219,73 @@ class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets auction_reserve_price
+     * Gets item_draft_id
      *
-     * @return \Ebay\Sell\Listing\Model\Amount|null
+     * @return string|null
      */
-    public function getAuctionReservePrice()
+    public function getItemDraftId()
     {
-        return $this->container['auction_reserve_price'];
+        return $this->container['item_draft_id'];
     }
 
     /**
-     * Sets auction_reserve_price
+     * Sets item_draft_id
      *
-     * @param \Ebay\Sell\Listing\Model\Amount|null $auction_reserve_price auction_reserve_price
+     * @param string|null $item_draft_id The eBay generated ID of the listing draft.
      *
      * @return self
      */
-    public function setAuctionReservePrice($auction_reserve_price)
+    public function setItemDraftId($item_draft_id)
     {
-        $this->container['auction_reserve_price'] = $auction_reserve_price;
+        $this->container['item_draft_id'] = $item_draft_id;
 
         return $this;
     }
 
     /**
-     * Gets auction_start_price
+     * Gets sell_flow_native_uri
      *
-     * @return \Ebay\Sell\Listing\Model\Amount|null
+     * @return string|null
      */
-    public function getAuctionStartPrice()
+    public function getSellFlowNativeUri()
     {
-        return $this->container['auction_start_price'];
+        return $this->container['sell_flow_native_uri'];
     }
 
     /**
-     * Sets auction_start_price
+     * Sets sell_flow_native_uri
      *
-     * @param \Ebay\Sell\Listing\Model\Amount|null $auction_start_price auction_start_price
+     * @param string|null $sell_flow_native_uri The URI the Partner uses to send the seller to their listing draft that was created on the eBay site. From there the seller can change, update, and publish the item on eBay. This is returned when the seller is using a mobile app.
      *
      * @return self
      */
-    public function setAuctionStartPrice($auction_start_price)
+    public function setSellFlowNativeUri($sell_flow_native_uri)
     {
-        $this->container['auction_start_price'] = $auction_start_price;
+        $this->container['sell_flow_native_uri'] = $sell_flow_native_uri;
 
         return $this;
     }
 
     /**
-     * Gets price
+     * Gets sell_flow_url
      *
-     * @return \Ebay\Sell\Listing\Model\Amount|null
+     * @return string|null
      */
-    public function getPrice()
+    public function getSellFlowUrl()
     {
-        return $this->container['price'];
+        return $this->container['sell_flow_url'];
     }
 
     /**
-     * Sets price
+     * Sets sell_flow_url
      *
-     * @param \Ebay\Sell\Listing\Model\Amount|null $price price
+     * @param string|null $sell_flow_url The web URL the Partner uses to send the seller to the listing draft that was created on the eBay site. From there the seller can change, update, and publish the item on eBay. This is returned when the seller is using mobile web (mweb) or the desktop web. Note: You must construct the URL using the URL returned in this field and a session token. For example: sellFlowUrl?id_token=session_token
      *
      * @return self
      */
-    public function setPrice($price)
+    public function setSellFlowUrl($sell_flow_url)
     {
-        $this->container['price'] = $price;
+        $this->container['sell_flow_url'] = $sell_flow_url;
 
         return $this;
     }
@@ -310,7 +310,7 @@ class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

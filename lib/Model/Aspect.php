@@ -1,11 +1,11 @@
 <?php
 /**
- * ItemDraft
+ * Aspect
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Listing\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Listing\ObjectSerializer;
 
 /**
- * ItemDraft Class Doc Comment
+ * Aspect Class Doc Comment
  *
  * @category Class
- * @description The type that defines the fields for the listing details.
- * @package  Ebay\Sell
+ * @description The type that defines the fields for the item aspects.
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
+class Aspect implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ItemDraft';
+    protected static $openAPIModelName = 'Aspect';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,12 +60,8 @@ class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'category_id' => 'string',
-        'condition' => 'string',
-        'format' => 'string',
-        'pricing_summary' => '\Ebay\Sell\Listing\Model\PricingSummary',
-        'product' => '\Ebay\Sell\Listing\Model\Product',
-        'charity' => '\Ebay\Sell\Listing\Model\Charity'
+        'name' => 'string',
+        'values' => 'string[]'
     ];
 
     /**
@@ -76,12 +72,8 @@ class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'category_id' => null,
-        'condition' => null,
-        'format' => null,
-        'pricing_summary' => null,
-        'product' => null,
-        'charity' => null
+        'name' => null,
+        'values' => null
     ];
 
     /**
@@ -111,12 +103,8 @@ class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'category_id' => 'categoryId',
-        'condition' => 'condition',
-        'format' => 'format',
-        'pricing_summary' => 'pricingSummary',
-        'product' => 'product',
-        'charity' => 'charity'
+        'name' => 'name',
+        'values' => 'values'
     ];
 
     /**
@@ -125,12 +113,8 @@ class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'category_id' => 'setCategoryId',
-        'condition' => 'setCondition',
-        'format' => 'setFormat',
-        'pricing_summary' => 'setPricingSummary',
-        'product' => 'setProduct',
-        'charity' => 'setCharity'
+        'name' => 'setName',
+        'values' => 'setValues'
     ];
 
     /**
@@ -139,12 +123,8 @@ class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'category_id' => 'getCategoryId',
-        'condition' => 'getCondition',
-        'format' => 'getFormat',
-        'pricing_summary' => 'getPricingSummary',
-        'product' => 'getProduct',
-        'charity' => 'getCharity'
+        'name' => 'getName',
+        'values' => 'getValues'
     ];
 
     /**
@@ -204,12 +184,8 @@ class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['category_id'] = isset($data['category_id']) ? $data['category_id'] : null;
-        $this->container['condition'] = isset($data['condition']) ? $data['condition'] : null;
-        $this->container['format'] = isset($data['format']) ? $data['format'] : null;
-        $this->container['pricing_summary'] = isset($data['pricing_summary']) ? $data['pricing_summary'] : null;
-        $this->container['product'] = isset($data['product']) ? $data['product'] : null;
-        $this->container['charity'] = isset($data['charity']) ? $data['charity'] : null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['values'] = $data['values'] ?? null;
     }
 
     /**
@@ -237,145 +213,49 @@ class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets category_id
+     * Gets name
      *
      * @return string|null
      */
-    public function getCategoryId()
+    public function getName()
     {
-        return $this->container['category_id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets category_id
+     * Sets name
      *
-     * @param string|null $category_id The ID of the leaf category associated with this item. A leaf category is the lowest level in that category and has no children. Note: If you submit both a category ID and an EPID, eBay determines the best category based on the EPID and uses that. The category ID will be ignored.
+     * @param string|null $name The name of an aspect, such and Brand.
      *
      * @return self
      */
-    public function setCategoryId($category_id)
+    public function setName($name)
     {
-        $this->container['category_id'] = $category_id;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets condition
+     * Gets values
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getCondition()
+    public function getValues()
     {
-        return $this->container['condition'];
+        return $this->container['values'];
     }
 
     /**
-     * Sets condition
+     * Sets values
      *
-     * @param string|null $condition The enumeration value passed in here sets the condition of the item, such as NEW or USED_EXCELLENT. See ConditionEnum for the full list of supported values. Supported item conditions can vary by eBay category. To see which item conditions are supported for a category, you can use the getItemConditionPolicies method of the Metadata API. Note: The 'Manufacturer Refurbished' item condition is no longer a valid item condition in any eBay marketplace, and to reflect this change, the pre-existing MANUFACTURER_REFURBISHED enumeration value has been replaced by the CERTIFIED_REFURBISHED enumeration value. CR-eligible sellers should make a note to start using CERTIFIED_REFURBISHED from this point forward. To list an item as 'Certified Refurbished', a seller must be pre-qualified by eBay for this feature. Any seller who is not eligible for this feature will be blocked if they try to create a new listing or revise an existing listing with this item condition. Any seller that is interested in eligibility requirements to list with 'Certified Refurbished' should see the Certified refurbished program page in Seller Center. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/listing/types/api:ConditionEnum'>eBay API documentation</a>
+     * @param string[]|null $values A list of potential values for this aspect.
      *
      * @return self
      */
-    public function setCondition($condition)
+    public function setValues($values)
     {
-        $this->container['condition'] = $condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format The format of the listing. Valid Values: FIXED_PRICE and AUCTION For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/listing/types/api:ListingFormatEnum'>eBay API documentation</a>
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets pricing_summary
-     *
-     * @return \Ebay\Sell\Listing\Model\PricingSummary|null
-     */
-    public function getPricingSummary()
-    {
-        return $this->container['pricing_summary'];
-    }
-
-    /**
-     * Sets pricing_summary
-     *
-     * @param \Ebay\Sell\Listing\Model\PricingSummary|null $pricing_summary pricing_summary
-     *
-     * @return self
-     */
-    public function setPricingSummary($pricing_summary)
-    {
-        $this->container['pricing_summary'] = $pricing_summary;
-
-        return $this;
-    }
-
-    /**
-     * Gets product
-     *
-     * @return \Ebay\Sell\Listing\Model\Product|null
-     */
-    public function getProduct()
-    {
-        return $this->container['product'];
-    }
-
-    /**
-     * Sets product
-     *
-     * @param \Ebay\Sell\Listing\Model\Product|null $product product
-     *
-     * @return self
-     */
-    public function setProduct($product)
-    {
-        $this->container['product'] = $product;
-
-        return $this;
-    }
-
-    /**
-     * Gets charity
-     *
-     * @return \Ebay\Sell\Listing\Model\Charity|null
-     */
-    public function getCharity()
-    {
-        return $this->container['charity'];
-    }
-
-    /**
-     * Sets charity
-     *
-     * @param \Ebay\Sell\Listing\Model\Charity|null $charity charity
-     *
-     * @return self
-     */
-    public function setCharity($charity)
-    {
-        $this->container['charity'] = $charity;
+        $this->container['values'] = $values;
 
         return $this;
     }
@@ -400,7 +280,7 @@ class ItemDraft implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

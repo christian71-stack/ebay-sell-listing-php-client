@@ -1,11 +1,11 @@
 <?php
 /**
- * ItemDraftResponse
+ * Product
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Listing\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Listing\ObjectSerializer;
 
 /**
- * ItemDraftResponse Class Doc Comment
+ * Product Class Doc Comment
  *
  * @category Class
- * @description The type that defines the field for the &lt;b&gt; createItemDraft&lt;/b&gt; response.
- * @package  Ebay\Sell
+ * @description The type that defines the fields for the aspects of a product.
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class Product implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ItemDraftResponse';
+    protected static $openAPIModelName = 'Product';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,12 @@ class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'item_draft_id' => 'string',
-        'sell_flow_native_uri' => 'string',
-        'sell_flow_url' => 'string'
+        'aspects' => '\Ebay\Sell\Listing\Model\Aspect[]',
+        'brand' => 'string',
+        'description' => 'string',
+        'epid' => 'string',
+        'image_urls' => 'string[]',
+        'title' => 'string'
     ];
 
     /**
@@ -73,9 +76,12 @@ class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'item_draft_id' => null,
-        'sell_flow_native_uri' => null,
-        'sell_flow_url' => null
+        'aspects' => null,
+        'brand' => null,
+        'description' => null,
+        'epid' => null,
+        'image_urls' => null,
+        'title' => null
     ];
 
     /**
@@ -105,9 +111,12 @@ class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'item_draft_id' => 'itemDraftId',
-        'sell_flow_native_uri' => 'sellFlowNativeUri',
-        'sell_flow_url' => 'sellFlowUrl'
+        'aspects' => 'aspects',
+        'brand' => 'brand',
+        'description' => 'description',
+        'epid' => 'epid',
+        'image_urls' => 'imageUrls',
+        'title' => 'title'
     ];
 
     /**
@@ -116,9 +125,12 @@ class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'item_draft_id' => 'setItemDraftId',
-        'sell_flow_native_uri' => 'setSellFlowNativeUri',
-        'sell_flow_url' => 'setSellFlowUrl'
+        'aspects' => 'setAspects',
+        'brand' => 'setBrand',
+        'description' => 'setDescription',
+        'epid' => 'setEpid',
+        'image_urls' => 'setImageUrls',
+        'title' => 'setTitle'
     ];
 
     /**
@@ -127,9 +139,12 @@ class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'item_draft_id' => 'getItemDraftId',
-        'sell_flow_native_uri' => 'getSellFlowNativeUri',
-        'sell_flow_url' => 'getSellFlowUrl'
+        'aspects' => 'getAspects',
+        'brand' => 'getBrand',
+        'description' => 'getDescription',
+        'epid' => 'getEpid',
+        'image_urls' => 'getImageUrls',
+        'title' => 'getTitle'
     ];
 
     /**
@@ -189,9 +204,12 @@ class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['item_draft_id'] = isset($data['item_draft_id']) ? $data['item_draft_id'] : null;
-        $this->container['sell_flow_native_uri'] = isset($data['sell_flow_native_uri']) ? $data['sell_flow_native_uri'] : null;
-        $this->container['sell_flow_url'] = isset($data['sell_flow_url']) ? $data['sell_flow_url'] : null;
+        $this->container['aspects'] = $data['aspects'] ?? null;
+        $this->container['brand'] = $data['brand'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['epid'] = $data['epid'] ?? null;
+        $this->container['image_urls'] = $data['image_urls'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
     }
 
     /**
@@ -219,73 +237,145 @@ class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets item_draft_id
+     * Gets aspects
      *
-     * @return string|null
+     * @return \Ebay\Sell\Listing\Model\Aspect[]|null
      */
-    public function getItemDraftId()
+    public function getAspects()
     {
-        return $this->container['item_draft_id'];
+        return $this->container['aspects'];
     }
 
     /**
-     * Sets item_draft_id
+     * Sets aspects
      *
-     * @param string|null $item_draft_id The eBay generated ID of the listing draft.
+     * @param \Ebay\Sell\Listing\Model\Aspect[]|null $aspects The list of item aspects that describe the item (such as size, color, capacity, model, brand, etc.)
      *
      * @return self
      */
-    public function setItemDraftId($item_draft_id)
+    public function setAspects($aspects)
     {
-        $this->container['item_draft_id'] = $item_draft_id;
+        $this->container['aspects'] = $aspects;
 
         return $this;
     }
 
     /**
-     * Gets sell_flow_native_uri
+     * Gets brand
      *
      * @return string|null
      */
-    public function getSellFlowNativeUri()
+    public function getBrand()
     {
-        return $this->container['sell_flow_native_uri'];
+        return $this->container['brand'];
     }
 
     /**
-     * Sets sell_flow_native_uri
+     * Sets brand
      *
-     * @param string|null $sell_flow_native_uri The URI the Partner uses to send the seller to their listing draft that was created on the eBay site. From there the seller can change, update, and publish the item on eBay. This is returned when the seller is using a mobile app.
+     * @param string|null $brand The name brand of the item, such as Nike, Apple, etc.
      *
      * @return self
      */
-    public function setSellFlowNativeUri($sell_flow_native_uri)
+    public function setBrand($brand)
     {
-        $this->container['sell_flow_native_uri'] = $sell_flow_native_uri;
+        $this->container['brand'] = $brand;
 
         return $this;
     }
 
     /**
-     * Gets sell_flow_url
+     * Gets description
      *
      * @return string|null
      */
-    public function getSellFlowUrl()
+    public function getDescription()
     {
-        return $this->container['sell_flow_url'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets sell_flow_url
+     * Sets description
      *
-     * @param string|null $sell_flow_url The web URL the Partner uses to send the seller to the listing draft that was created on the eBay site. From there the seller can change, update, and publish the item on eBay. This is returned when the seller is using mobile web (mweb) or the desktop web. Note: You must construct the URL using the URL returned in this field and a session token. For example: sellFlowUrl?id_token=session_token
+     * @param string|null $description The description of the item that was created by the seller. This field supports plain text or rich content within HTML tags. Note: Active content is not supported. Active content includes animation or video via JavaScript, Flash, plug-ins, or form actions. Max Length: 500,000
      *
      * @return self
      */
-    public function setSellFlowUrl($sell_flow_url)
+    public function setDescription($description)
     {
-        $this->container['sell_flow_url'] = $sell_flow_url;
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets epid
+     *
+     * @return string|null
+     */
+    public function getEpid()
+    {
+        return $this->container['epid'];
+    }
+
+    /**
+     * Sets epid
+     *
+     * @param string|null $epid An EPID is the eBay product identifier of a product from the eBay product catalog. Note: If you submit both a category ID and an EPID, eBay determines the best category based on the EPID and uses that. The category ID will be ignored.
+     *
+     * @return self
+     */
+    public function setEpid($epid)
+    {
+        $this->container['epid'] = $epid;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_urls
+     *
+     * @return string[]|null
+     */
+    public function getImageUrls()
+    {
+        return $this->container['image_urls'];
+    }
+
+    /**
+     * Sets image_urls
+     *
+     * @param string[]|null $image_urls The image URLs of the item. The first URL will be the primary image, which appears on the View Item page in the eBay listing. The URL can be from the following: The eBay Picture Services (images previously uploaded). A server outside of eBay (self-hosted). For more details, see PictureURL and Introduction to Pictures in Listings. Maximum: 12 URLs (for most categories and marketplaces) Restrictions: You cannot mix self-hosted and EPS-hosted URLs in the same listing. All image URLs must be 'https'.
+     *
+     * @return self
+     */
+    public function setImageUrls($image_urls)
+    {
+        $this->container['image_urls'] = $image_urls;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title The seller-created title of the item. This should include unique characteristics of the item, such as brand, model, color, size, capacity, etc. For example: Levi's 501 size 10 black jeans
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
 
         return $this;
     }
@@ -310,7 +400,7 @@ class ItemDraftResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

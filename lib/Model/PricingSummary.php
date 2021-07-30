@@ -1,11 +1,11 @@
 <?php
 /**
- * Aspect
+ * PricingSummary
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Listing\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Listing\ObjectSerializer;
 
 /**
- * Aspect Class Doc Comment
+ * PricingSummary Class Doc Comment
  *
  * @category Class
- * @description The type that defines the fields for the item aspects.
- * @package  Ebay\Sell
+ * @description The type that defines the fields for the price details for an item.
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Aspect implements ModelInterface, ArrayAccess, \JsonSerializable
+class PricingSummary implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Aspect';
+    protected static $openAPIModelName = 'PricingSummary';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,9 @@ class Aspect implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'values' => 'string[]'
+        'auction_reserve_price' => '\Ebay\Sell\Listing\Model\Amount',
+        'auction_start_price' => '\Ebay\Sell\Listing\Model\Amount',
+        'price' => '\Ebay\Sell\Listing\Model\Amount'
     ];
 
     /**
@@ -72,8 +73,9 @@ class Aspect implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'values' => null
+        'auction_reserve_price' => null,
+        'auction_start_price' => null,
+        'price' => null
     ];
 
     /**
@@ -103,8 +105,9 @@ class Aspect implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'values' => 'values'
+        'auction_reserve_price' => 'auctionReservePrice',
+        'auction_start_price' => 'auctionStartPrice',
+        'price' => 'price'
     ];
 
     /**
@@ -113,8 +116,9 @@ class Aspect implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'values' => 'setValues'
+        'auction_reserve_price' => 'setAuctionReservePrice',
+        'auction_start_price' => 'setAuctionStartPrice',
+        'price' => 'setPrice'
     ];
 
     /**
@@ -123,8 +127,9 @@ class Aspect implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'values' => 'getValues'
+        'auction_reserve_price' => 'getAuctionReservePrice',
+        'auction_start_price' => 'getAuctionStartPrice',
+        'price' => 'getPrice'
     ];
 
     /**
@@ -184,8 +189,9 @@ class Aspect implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['values'] = isset($data['values']) ? $data['values'] : null;
+        $this->container['auction_reserve_price'] = $data['auction_reserve_price'] ?? null;
+        $this->container['auction_start_price'] = $data['auction_start_price'] ?? null;
+        $this->container['price'] = $data['price'] ?? null;
     }
 
     /**
@@ -213,49 +219,73 @@ class Aspect implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets auction_reserve_price
      *
-     * @return string|null
+     * @return \Ebay\Sell\Listing\Model\Amount|null
      */
-    public function getName()
+    public function getAuctionReservePrice()
     {
-        return $this->container['name'];
+        return $this->container['auction_reserve_price'];
     }
 
     /**
-     * Sets name
+     * Sets auction_reserve_price
      *
-     * @param string|null $name The name of an aspect, such and Brand.
+     * @param \Ebay\Sell\Listing\Model\Amount|null $auction_reserve_price auction_reserve_price
      *
      * @return self
      */
-    public function setName($name)
+    public function setAuctionReservePrice($auction_reserve_price)
     {
-        $this->container['name'] = $name;
+        $this->container['auction_reserve_price'] = $auction_reserve_price;
 
         return $this;
     }
 
     /**
-     * Gets values
+     * Gets auction_start_price
      *
-     * @return string[]|null
+     * @return \Ebay\Sell\Listing\Model\Amount|null
      */
-    public function getValues()
+    public function getAuctionStartPrice()
     {
-        return $this->container['values'];
+        return $this->container['auction_start_price'];
     }
 
     /**
-     * Sets values
+     * Sets auction_start_price
      *
-     * @param string[]|null $values A list of potential values for this aspect.
+     * @param \Ebay\Sell\Listing\Model\Amount|null $auction_start_price auction_start_price
      *
      * @return self
      */
-    public function setValues($values)
+    public function setAuctionStartPrice($auction_start_price)
     {
-        $this->container['values'] = $values;
+        $this->container['auction_start_price'] = $auction_start_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets price
+     *
+     * @return \Ebay\Sell\Listing\Model\Amount|null
+     */
+    public function getPrice()
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price
+     *
+     * @param \Ebay\Sell\Listing\Model\Amount|null $price price
+     *
+     * @return self
+     */
+    public function setPrice($price)
+    {
+        $this->container['price'] = $price;
 
         return $this;
     }
@@ -280,7 +310,7 @@ class Aspect implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

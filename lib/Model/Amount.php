@@ -1,11 +1,11 @@
 <?php
 /**
- * Product
+ * Amount
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Listing\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Listing\ObjectSerializer;
 
 /**
- * Product Class Doc Comment
+ * Amount Class Doc Comment
  *
  * @category Class
- * @description The type that defines the fields for the aspects of a product.
- * @package  Ebay\Sell
+ * @description The type that defines the fields for the currency and a monetary amount.
+ * @package  Ebay\Sell\Listing
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Product implements ModelInterface, ArrayAccess, \JsonSerializable
+class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Product';
+    protected static $openAPIModelName = 'Amount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,12 +60,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'aspects' => '\Ebay\Sell\Listing\Model\Aspect[]',
-        'brand' => 'string',
-        'description' => 'string',
-        'epid' => 'string',
-        'image_urls' => 'string[]',
-        'title' => 'string'
+        'currency' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -76,12 +72,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'aspects' => null,
-        'brand' => null,
-        'description' => null,
-        'epid' => null,
-        'image_urls' => null,
-        'title' => null
+        'currency' => null,
+        'value' => null
     ];
 
     /**
@@ -111,12 +103,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'aspects' => 'aspects',
-        'brand' => 'brand',
-        'description' => 'description',
-        'epid' => 'epid',
-        'image_urls' => 'imageUrls',
-        'title' => 'title'
+        'currency' => 'currency',
+        'value' => 'value'
     ];
 
     /**
@@ -125,12 +113,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'aspects' => 'setAspects',
-        'brand' => 'setBrand',
-        'description' => 'setDescription',
-        'epid' => 'setEpid',
-        'image_urls' => 'setImageUrls',
-        'title' => 'setTitle'
+        'currency' => 'setCurrency',
+        'value' => 'setValue'
     ];
 
     /**
@@ -139,12 +123,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'aspects' => 'getAspects',
-        'brand' => 'getBrand',
-        'description' => 'getDescription',
-        'epid' => 'getEpid',
-        'image_urls' => 'getImageUrls',
-        'title' => 'getTitle'
+        'currency' => 'getCurrency',
+        'value' => 'getValue'
     ];
 
     /**
@@ -204,12 +184,8 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['aspects'] = isset($data['aspects']) ? $data['aspects'] : null;
-        $this->container['brand'] = isset($data['brand']) ? $data['brand'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['epid'] = isset($data['epid']) ? $data['epid'] : null;
-        $this->container['image_urls'] = isset($data['image_urls']) ? $data['image_urls'] : null;
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -237,145 +213,49 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets aspects
-     *
-     * @return \Ebay\Sell\Listing\Model\Aspect[]|null
-     */
-    public function getAspects()
-    {
-        return $this->container['aspects'];
-    }
-
-    /**
-     * Sets aspects
-     *
-     * @param \Ebay\Sell\Listing\Model\Aspect[]|null $aspects The list of item aspects that describe the item (such as size, color, capacity, model, brand, etc.)
-     *
-     * @return self
-     */
-    public function setAspects($aspects)
-    {
-        $this->container['aspects'] = $aspects;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand
+     * Gets currency
      *
      * @return string|null
      */
-    public function getBrand()
+    public function getCurrency()
     {
-        return $this->container['brand'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets brand
+     * Sets currency
      *
-     * @param string|null $brand The name brand of the item, such as Nike, Apple, etc.
+     * @param string|null $currency The three-letter ISO 4217 code representing the currency of the amount in the value field. Restriction: Only the currency of the marketplace is supported. For example, on the US marketplace the only currency supported is USD. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/listing/types/bas:CurrencyCodeEnum'>eBay API documentation</a>
      *
      * @return self
      */
-    public function setBrand($brand)
+    public function setCurrency($currency)
     {
-        $this->container['brand'] = $brand;
+        $this->container['currency'] = $currency;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets value
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getValue()
     {
-        return $this->container['description'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets description
+     * Sets value
      *
-     * @param string|null $description The description of the item that was created by the seller. This field supports plain text or rich content within HTML tags. Note: Active content is not supported. Active content includes animation or video via JavaScript, Flash, plug-ins, or form actions. Max Length: 500,000
+     * @param string|null $value The monetary amount, in the currency specified by the currency field.
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setValue($value)
     {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets epid
-     *
-     * @return string|null
-     */
-    public function getEpid()
-    {
-        return $this->container['epid'];
-    }
-
-    /**
-     * Sets epid
-     *
-     * @param string|null $epid An EPID is the eBay product identifier of a product from the eBay product catalog. Note: If you submit both a category ID and an EPID, eBay determines the best category based on the EPID and uses that. The category ID will be ignored.
-     *
-     * @return self
-     */
-    public function setEpid($epid)
-    {
-        $this->container['epid'] = $epid;
-
-        return $this;
-    }
-
-    /**
-     * Gets image_urls
-     *
-     * @return string[]|null
-     */
-    public function getImageUrls()
-    {
-        return $this->container['image_urls'];
-    }
-
-    /**
-     * Sets image_urls
-     *
-     * @param string[]|null $image_urls The image URLs of the item. The first URL will be the primary image, which appears on the View Item page in the eBay listing. The URL can be from the following: The eBay Picture Services (images previously uploaded). A server outside of eBay (self-hosted). For more details, see PictureURL and Introduction to Pictures in Listings. Maximum: 12 URLs (for most categories and marketplaces) Restrictions: You cannot mix self-hosted and EPS-hosted URLs in the same listing. All image URLs must be 'https'.
-     *
-     * @return self
-     */
-    public function setImageUrls($image_urls)
-    {
-        $this->container['image_urls'] = $image_urls;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title The seller-created title of the item. This should include unique characteristics of the item, such as brand, model, color, size, capacity, etc. For example: Levi's 501 size 10 black jeans
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
+        $this->container['value'] = $value;
 
         return $this;
     }
@@ -400,7 +280,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
