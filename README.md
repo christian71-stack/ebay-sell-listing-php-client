@@ -18,11 +18,11 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github/zvps/ebay-sell-listing-php-client.git"
+      "url": "https://github/christian71-stack/ebay-sell-listing-php-client.git"
     }
   ],
   "require": {
-    "zvps/ebay-sell-listing-php-client": "*@dev"
+    "christian71-stack/ebay-sell-listing-php-client": "*@dev"
   }
 }
 ```
